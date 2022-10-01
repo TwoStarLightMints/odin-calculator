@@ -1,5 +1,13 @@
 const display = document.querySelector('.display');
+const buttons = document.querySelectorAll('.buttons button');
 let displayVal = "";
+
+(Array.from(buttons)).forEach(elem => {
+  elem.addEventListener('click', e => {
+    displayVal += e.target.innerText;
+    updateDisplay(displayVal);
+  });
+});
 
 function updateDisplay (newVal) {
   display.innerText = newVal;
