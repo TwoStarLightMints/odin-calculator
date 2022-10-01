@@ -4,8 +4,14 @@ let displayVal = "";
 
 (Array.from(buttons)).forEach(elem => {
   elem.addEventListener('click', e => {
-    displayVal += e.target.innerText;
-    updateDisplay(displayVal);
+    let val = e.target.innerText;
+    if (val === "Clear") {
+      displayVal = "";
+      updateDisplay(displayVal);
+    } else {
+      displayVal += val;
+      updateDisplay(displayVal);
+    }
   });
 });
 
