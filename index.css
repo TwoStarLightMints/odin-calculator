@@ -1,0 +1,14 @@
+.calculator, .buttons, .nums, .operations {
+  display: flex;
+}
+
+.calculator, .operations {
+  flex-direction: column;
+}
+
+.nums {
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 72px;
+}
