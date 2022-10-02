@@ -20,36 +20,39 @@ function updateDisplay (newVal) {
 }
 
 function add (num1, num2) {
-  return parseFloat(num1) + parseFloat(num2);
+  return num1 + num2;
 }
 
 function subtract (num1, num2) {
-  return parseFloat(num1) - parseFloat(num2);
+  return num1 - num2;
 }
 
 function multiply (num1, num2) {
-  return parseFloat(num1) * parseFloat(num2);
+  return num1 * num2;
 }
 
 function divide (num1, num2) {
   if (num2 != '0') {
-    return parseFloat(num1) / parseFloat(num2);
+    return num1 / num2;
   }
 }
 
 function operate (oper, num1, num2) {
+  let numOne = parseFloat(num1);
+  let numTwo = parseFloat(num2);
+
   switch (oper) {
     case '+':
-      add(num1, num2);
+      add(numOne, numTwo);
       break;
     case '-':
-      subtract(num1, num2);
+      subtract(numOne, numTwo);
       break;
     case '*':
-      multiply(num1, num2);
+      multiply(numOne, numTwo);
       break;
     case '/':
-      divide(num1, num2);
+      divide(numOne, numTwo);
       break;
   }
 }
