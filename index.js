@@ -6,8 +6,10 @@ let oper = "";
 
 (Array.from(buttons)).forEach(elem => {
   elem.addEventListener('click', e => {
+    
     let val = e.target.innerText;
-    if (val === "Clear") {
+
+    if (val === "AC") {
 
       displayVal = "0";
       numQueue.length = 0;
@@ -17,21 +19,27 @@ let oper = "";
       
       if (e.target.className === "oper") {
         if (numQueue.length == 0) {
+
           numQueue.push(displayVal);
           displayVal = "0";
           oper = val;
+
         } else {
+
           numQueue.push(displayVal);
           displayVal = operate(oper, numQueue[0], numQueue[1]);
           oper = "";
           numQueue.length = 0;
+
         }
       } else {
+
         if (displayVal === "0") {
           displayVal = val;
         } else {
           displayVal += val;
         }
+
       }
 
     }
