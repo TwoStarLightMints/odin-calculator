@@ -1,19 +1,46 @@
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('.buttons button');
-let displayVal = "";
+let displayVal = "0";
+let numQueue = [];
+let oper = "";
 
 (Array.from(buttons)).forEach(elem => {
   elem.addEventListener('click', e => {
     let val = e.target.innerText;
     if (val === "Clear") {
-      displayVal = "";
-      updateDisplay(displayVal);
+
+      displayVal = "0";
+      numQueue.length = 0;
+      oper = "";
+
     } else {
-      displayVal += val;
-      updateDisplay(displayVal);
+      
+      if (e.target.className === "oper") {
+        if (numQueue.length == 0) {
+          numQueue.push(displayVal);
+          displayVal = "0";
+          oper = val;
+        } else {
+          numQueue.push(displayVal);
+          displayVal = operate(oper, numQueue[0], numQueue[1]);
+          oper = "";
+          numQueue.length = 0;
+        }
+      } else {
+        if (displayVal === "0") {
+          displayVal = val;
+        } else {
+          displayVal += val;
+        }
+      }
+
     }
+
+    updateDisplay(displayVal);
   });
 });
+
+
 
 function updateDisplay (newVal) {
   display.innerText = newVal;
@@ -37,22 +64,20 @@ function divide (num1, num2) {
   }
 }
 
+
+
 function operate (oper, num1, num2) {
   let numOne = parseFloat(num1);
   let numTwo = parseFloat(num2);
 
   switch (oper) {
     case '+':
-      add(numOne, numTwo);
-      break;
+      return add(numOne, numTwo);
     case '-':
-      subtract(numOne, numTwo);
-      break;
+      return subtract(numOne, numTwo);
     case '*':
-      multiply(numOne, numTwo);
-      break;
+      return multiply(numOne, numTwo);
     case '/':
-      divide(numOne, numTwo);
-      break;
+      return divide(numOne, numTwo);
   }
 }
