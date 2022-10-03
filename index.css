@@ -6,6 +6,19 @@
   flex-direction: column;
 }
 
+.calculator {
+  width: fit-content;
+
+  padding: 20px;
+  background-color: gray;
+  border: 0px solid gray;
+  border-radius: 10px;
+}
+
+.buttons {
+  gap: 10px;
+}
+
 .nums {
   flex-wrap: wrap;
   justify-content: center;
