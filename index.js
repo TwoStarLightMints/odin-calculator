@@ -6,54 +6,27 @@ let oper = "";
 
 (Array.from(buttons)).forEach(elem => {
   elem.addEventListener('click', e => {
+
     
-    let val = e.target.innerText;
-
-    if (val === "AC") {
-
-      displayVal = "0";
-      numQueue.length = 0;
-      oper = "";
-
-    } else {
-      
-      if (e.target.className === "oper") {
-        if (numQueue.length == 0) {
-
-          numQueue.push(displayVal);
-          displayVal = "0";
-          oper = val;
-
-        } else {
-
-          numQueue.push(displayVal);
-          displayVal = operate(oper, numQueue[0], numQueue[1]);
-          oper = "";
-          numQueue.length = 0;
-
-        }
-      } else {
-
-        if (displayVal === "0") {
-          displayVal = val;
-        } else {
-          displayVal += val;
-        }
-
-      }
-
-    }
-
-    updateDisplay(displayVal);
   });
 });
 
 
-
-function updateDisplay (newVal) {
-  display.innerText = newVal;
+function round (val) {
+  let array = `${val}`.split("");
+  if (array.length > 14) {
+    return (array.slice(0, 14)).join("");
+  }
+  return val;
 }
 
+function updateDisplay (newVal) {
+  display.innerText = round(newVal);
+}
+
+
+
+// Math functions
 function add (num1, num2) {
   return num1 + num2;
 }
